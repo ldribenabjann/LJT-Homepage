@@ -1,0 +1,13 @@
+name: date-test
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test Time.parse year-only
+        run: |
+          ruby -rtime -e 'begin; puts Time.parse("2025").inspect; rescue => e; puts "ERROR: #{e.class}: #{e.message}"; end'
+      - uses: actions/checkout@v4
+      - name: Build with Jekyll
+        uses: jekyll/actions-jekyll@main
