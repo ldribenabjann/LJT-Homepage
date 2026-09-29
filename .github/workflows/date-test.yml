@@ -9,5 +9,9 @@ jobs:
         run: |
           ruby -rtime -e 'begin; puts Time.parse("2025").inspect; rescue => e; puts "ERROR: #{e.class}: #{e.message}"; end'
       - uses: actions/checkout@v4
-      - name: Build with Jekyll
-        uses: jekyll/actions-jekyll@main
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+      - name: Jekyll build
+        run: bundle exec jekyll build
